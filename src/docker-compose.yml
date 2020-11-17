@@ -37,7 +37,6 @@ volumes:
   post_db:
 
 networks:
-  env_file: .env
   front_net:
     ipam:
       driver: default
