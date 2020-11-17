@@ -38,12 +38,4 @@ volumes:
 
 networks:
   front_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: ${FRONT_NET}
   back_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: ${BACK_NET}
