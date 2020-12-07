@@ -5,6 +5,8 @@ services:
     env_file:
       - .env
     image: mongo:${VERSION_MONGO}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     volumes:
       - post_db:/data/db
     networks:
@@ -17,6 +19,8 @@ services:
     env_file:
       - .env
     image: ${DOCKER_USERNAME}/ui:${UI_VERSION}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     ports:
       - ${UI_PORT}:9292/tcp
     logging:
@@ -35,6 +39,7 @@ services:
     environment:
       - POST_DATABASE_HOST=post_db
       - POST_DATABASE=posts
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     depends_on:
       - post_db
     ports:
@@ -51,6 +56,8 @@ services:
     env_file:
       - .env
     image: ${DOCKER_USERNAME}/comment:${COMMENT_VERSION}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     networks:
       - back_net
 
